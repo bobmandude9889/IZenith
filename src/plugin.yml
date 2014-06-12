@@ -1,0 +1,90 @@
+name: iZenith
+version: 3.28.14
+main: net.bobmandude9889.iZenith.Main
+author: bobmandude9889
+depend: [CustomGUIAPI]
+
+commands:
+   ranks:
+      usage: /<command>
+      description: Shows a list of ranks
+   donator:
+      usage: /<command>
+      description: Warps to the donator area
+   pvp:
+      usage: /<command>
+      description: Warps to the pvp area
+   wild:
+      usage: /<command>
+      description: Warps to the wild
+   nether:
+      usage: /<command>
+      description: Warps to the Nether
+   end:
+      usage: /<command>
+      description: Warps to the END
+   reminder:
+      usage: /<command>
+      description: Reminder based commands.
+   nomobs:
+      usage: /<command>
+      description: Enables selection tool.
+   setnomobs:
+      usage: /<command>
+      description: Sets no mob area.
+   nooutfire: 
+      usage: /<command>
+      description: NO OUT FIRE
+   commandblk:
+      usage: /<command>
+      description: command
+      
+permissions:
+   tabcol.0:
+      description: color
+      default: false
+   tabcol.1:
+      description: color
+      default: false
+   tabcol.2:
+      description: color
+      default: false
+   tabcol.3:
+      description: color
+      default: false
+   tabcol.4:
+      description: color
+      default: false   
+   tabcol.5:
+      description: color
+      default: false
+   tabcol.6:
+      description: color
+      default: false   
+   tabcol.7:
+      description: color
+      default: false
+   tabcol.8:
+      description: color
+      default: false   
+   tabcol.9:
+      description: color
+      default: false
+   tabcol.a:
+      description: color
+      default: false
+   tabcol.b:
+      description: color
+      default: false   
+   tabcol.c:
+      description: color
+      default: false
+   tabcol.d:
+      description: color
+      default: false
+   tabcol.e:
+      description: color
+      default: false
+   tabcol.f:
+      description: color
+      default: false

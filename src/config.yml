@@ -1,0 +1,9 @@
+ranks:
+  - 'Header'
+  - 'Rank number 1 - Info'
+  - 'Rank number 2 - Info'
+join-message: '%PLAYER%'
+quit-message: '%PLAYER%'
+broadcast_messages:
+  - 'Message 1'
+  - 'Message 2'
