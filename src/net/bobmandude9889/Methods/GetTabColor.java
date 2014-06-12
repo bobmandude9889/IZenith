@@ -31,7 +31,7 @@ public class GetTabColor {
 		}else if(perm.getPrimaryGroup(player).equalsIgnoreCase("developer")){
 			return ChatColor.RED;
 		}else if(perm.getPrimaryGroup(player).equalsIgnoreCase("owner")){
-			return ChatColor.DARK_GREEN;
+			return ChatColor.DARK_BLUE;
 		}
 		return ChatColor.WHITE;
 	}
