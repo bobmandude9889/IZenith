@@ -13,7 +13,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class Main extends JavaPlugin implements Listener {
 	Variables vars = new Variables(this);
-
+	
 	public void onEnable() {
 		getConfig().options().copyDefaults(true);
 		saveDefaultConfig();

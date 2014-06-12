@@ -2,7 +2,7 @@ name: iZenith
 version: 3.28.14
 main: net.bobmandude9889.iZenith.Main
 author: bobmandude9889
-depend: [CustomGUIAPI]
+depend: [CustomGUIAPI,Vault]
 
 commands:
    ranks:

@@ -1,42 +1,38 @@
 package net.bobmandude9889.Methods;
 
+import net.milkbowl.vault.permission.Permission;
+
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 public class GetTabColor {
 	public static ChatColor getTabColor(Player player) {
-		if (player.hasPermission("tabcol.0"))
-			return ChatColor.BLACK;
-		if (player.hasPermission("tabcol.1"))
-			return ChatColor.DARK_BLUE;
-		if (player.hasPermission("tabcol.2"))
-			return ChatColor.DARK_GREEN;
-		if (player.hasPermission("tabcol.3"))
-			return ChatColor.DARK_AQUA;
-		if (player.hasPermission("tabcol.4"))
-			return ChatColor.DARK_RED;
-		if (player.hasPermission("tabcol.5"))
-			return ChatColor.DARK_PURPLE;
-		if (player.hasPermission("tabcol.6"))
-			return ChatColor.GOLD;
-		if (player.hasPermission("tabcol.7"))
+		Permission perm = IPermission.get();
+		if(perm.getPrimaryGroup(player).equalsIgnoreCase("beginner")){
 			return ChatColor.GRAY;
-		if (player.hasPermission("tabcol.8"))
-			return ChatColor.DARK_GRAY;
-		if (player.hasPermission("tabcol.9"))
-			return ChatColor.BLUE;
-		if (player.hasPermission("tabcol.a"))
-			return ChatColor.GREEN;
-		if (player.hasPermission("tabcol.b"))
-			return ChatColor.AQUA;
-		if (player.hasPermission("tabcol.c"))
-			return ChatColor.RED;
-		if (player.hasPermission("tabcol.d"))
+		}else if(perm.getPrimaryGroup(player).equalsIgnoreCase("donator")){
 			return ChatColor.LIGHT_PURPLE;
-		if (player.hasPermission("tabcol.e"))
+		}else if(perm.getPrimaryGroup(player).equalsIgnoreCase("knight")){
+			return ChatColor.BLUE;
+		}else if(perm.getPrimaryGroup(player).equalsIgnoreCase("slayer")){
 			return ChatColor.YELLOW;
-		if (player.hasPermission("tabcol.f"))
-			return ChatColor.WHITE;
-		return ChatColor.RESET;
+		}else if(perm.getPrimaryGroup(player).equalsIgnoreCase("dragon")){
+			return ChatColor.GOLD;
+		}else if(perm.getPrimaryGroup(player).equalsIgnoreCase("donator")){
+			return ChatColor.LIGHT_PURPLE;
+		}else if(perm.getPrimaryGroup(player).equalsIgnoreCase("lord")){
+			return ChatColor.DARK_GREEN;
+		}else if(perm.getPrimaryGroup(player).equalsIgnoreCase("god")){
+			return ChatColor.AQUA;
+		}else if(perm.getPrimaryGroup(player).equalsIgnoreCase("moderator")){
+			return ChatColor.DARK_AQUA;
+		}else if(perm.getPrimaryGroup(player).equalsIgnoreCase("admin")){
+			return ChatColor.DARK_PURPLE;
+		}else if(perm.getPrimaryGroup(player).equalsIgnoreCase("developer")){
+			return ChatColor.RED;
+		}else if(perm.getPrimaryGroup(player).equalsIgnoreCase("owner")){
+			return ChatColor.DARK_GREEN;
+		}
+		return ChatColor.WHITE;
 	}
 }
