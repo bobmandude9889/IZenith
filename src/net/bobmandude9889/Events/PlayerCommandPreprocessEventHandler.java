@@ -29,6 +29,10 @@ public class PlayerCommandPreprocessEventHandler implements Listener{
 		} else if(m.startsWith("/killall all") || m.startsWith("/killall itemframes")){
 			e.getPlayer().sendMessage(ChatColor.RED + "You cannot kill that type!");
 			e.setCancelled(true);
+		} else if(m.startsWith("/kit") && e.getPlayer().getWorld().getName().equals("plotworld")){
+			e.getPlayer().sendMessage(ChatColor.RED + "You cannot use \"/kit\" in the plotworld");
+		} else if(m.startsWith("/sethome") && e.getPlayer().getWorld().getName().equals("plotworld")){
+			e.getPlayer().sendMessage(ChatColor.RED + "You cannot use \"/sethome\" in the plotworld");
 		}
 	}
 }
