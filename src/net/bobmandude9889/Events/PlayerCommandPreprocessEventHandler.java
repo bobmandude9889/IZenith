@@ -31,8 +31,10 @@ public class PlayerCommandPreprocessEventHandler implements Listener{
 			e.setCancelled(true);
 		} else if(m.startsWith("/kit") && e.getPlayer().getWorld().getName().equals("plotworld") && !e.getPlayer().isOp()){
 			e.getPlayer().sendMessage(ChatColor.RED + "You cannot use \"/kit\" in the plotworld");
+			e.setCancelled(true);
 		} else if(m.startsWith("/sethome") && e.getPlayer().getWorld().getName().equals("plotworld") && !e.getPlayer().isOp()){
 			e.getPlayer().sendMessage(ChatColor.RED + "You cannot use \"/sethome\" in the plotworld");
+			e.setCancelled(true);
 		}
 	}
 }
