@@ -26,7 +26,7 @@ public class PlayerCommandPreprocessEventHandler implements Listener{
 			e.setCancelled(true);
 			e.getPlayer().sendMessage(
 					ChatColor.RED + "You do not have access to that!");
-		} else if(m.startsWith("/killall all") || m.startsWith("/killall itemframes")){
+		} else if(m.startsWith("/killall all") || m.startsWith("/killall itemframe")){
 			e.getPlayer().sendMessage(ChatColor.RED + "You cannot kill that type!");
 			e.setCancelled(true);
 		} else if(m.startsWith("/kit") && e.getPlayer().getWorld().getName().equals("plotworld") && !e.getPlayer().isOp()){
