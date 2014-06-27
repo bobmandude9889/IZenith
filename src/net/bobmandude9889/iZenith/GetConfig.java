@@ -1,5 +1,6 @@
 package net.bobmandude9889.iZenith;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.bukkit.Location;
@@ -10,6 +11,7 @@ public class GetConfig {
 	
 	public static void loadConfigVars(JavaPlugin plugin, Variables vars){
 		List<String> stringFires = plugin.getConfig().getStringList("fireLocs");
+		vars.fires = new ArrayList<Location>();
 		for (int i = 0; i < stringFires.size(); i++) {
 			String[] splitString = stringFires.get(i).split(",");
 			double x = 0;

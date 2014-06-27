@@ -25,12 +25,12 @@ public class NoMobs implements IZCommand {
 			String commandLabel, String[] args) {
 		Player player = (Player) sender;
 		if (sender instanceof Player && sender.isOp()) {
-			if (vars.selectors.containsKey(player.getName())) {
+			if (vars.selectors.contains(player)) {
 				player.sendMessage(ChatColor.GOLD + "Selection disabled!");
-				vars.selectors.remove(player.getName());
+				vars.selectors.remove(player);
 			} else {
 				player.sendMessage(ChatColor.GOLD + "Selection enabled!");
-				vars.selectors.put(player.getName(), player.getLocation());
+				vars.selectors.add(player);
 			}
 		}
 	}

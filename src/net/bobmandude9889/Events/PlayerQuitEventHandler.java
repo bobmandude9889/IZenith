@@ -25,8 +25,8 @@ public class PlayerQuitEventHandler implements Listener{
 		message = message.replace("%PLAYER%", player.getName());
 		message = ConvertColors.convertColors(message)[0];
 		event.setQuitMessage(message);
-		if (vars.selectors.containsKey(player.getName())) {
-			vars.selectors.remove(player.getName());
+		if (vars.selectors.contains(player)) {
+			vars.selectors.remove(player);
 		}
 	}
 	

@@ -29,8 +29,7 @@ public class PlayerInteractEventHandler implements Listener{
 		Player player = event.getPlayer();
 		if (event.getAction().equals(Action.RIGHT_CLICK_BLOCK)
 				&& event.hasItem() && event.getItem().getType().equals(Material.IRON_AXE)) {
-			player.sendMessage("click");
-			if (vars.selectors.containsKey(player.getName())) {
+			if (vars.selectors.contains(player)) {
 				event.setCancelled(true);
 				if (vars.selection2.containsKey(player.getName())) {
 					vars.selection2.remove(player.getName());
@@ -101,4 +100,15 @@ public class PlayerInteractEventHandler implements Listener{
 			}
 		}
 	}
+	
+	public int find(String m, List<String> list){
+		for(int i = 0; i < list.size(); i++){
+			String s = list.get(i);
+			if(s.equals(m)){
+				return i;
+			}
+		}
+		return 0;
+	}
+	
 }

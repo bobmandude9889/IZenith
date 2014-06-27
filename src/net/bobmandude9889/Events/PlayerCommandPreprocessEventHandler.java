@@ -20,8 +20,9 @@ public class PlayerCommandPreprocessEventHandler implements Listener{
 	@EventHandler
 	public void onPlayerCommand(PlayerCommandPreprocessEvent e) {
 		String m = e.getMessage();
-		if (m.startsWith("/plugins")
-				|| m.startsWith("/pl")
+		String[] aM = m.split(" ");
+		if (aM[0].equalsIgnoreCase("/plugins")
+				|| aM[0].equalsIgnoreCase("/pl")
 				&& !e.getPlayer().isOp()) {
 			e.setCancelled(true);
 			e.getPlayer().sendMessage(

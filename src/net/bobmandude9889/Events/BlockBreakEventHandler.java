@@ -27,7 +27,7 @@ public class BlockBreakEventHandler implements Listener{
 		Player player = event.getPlayer();
 		ItemStack axe = new ItemStack(Material.IRON_AXE, 1);
 		if (event.getPlayer().getItemInHand().equals(axe)) {
-			if (vars.selectors.containsKey(player.getName())) {
+			if (vars.selectors.contains(player)) {
 				event.setCancelled(true);
 				if (vars.selection1.containsKey(player.getName())) {
 					vars.selection1.remove(player.getName());

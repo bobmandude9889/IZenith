@@ -31,7 +31,7 @@ public class SetNoMobs implements IZCommand {
 		if (player.isOp()
 				&& vars.selection1.containsKey(player.getName())
 				&& vars.selection1.containsKey(player.getName())
-				&& vars.selectors.containsKey(player.getName())) {
+				&& vars.selectors.contains(player)) {
 			Location location = vars.selection1.get(player.getName());
 			plugin.getConfig().set("no_mob_area.s1.x", location.getBlockX());
 			plugin.getConfig().set("no_mob_area.s1.y", location.getBlockY());
