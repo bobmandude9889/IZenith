@@ -44,3 +44,6 @@ commands:
    startbroadcast:
       usage: /<command>
       description: Starts the auto broadcast
+   setyoutube:
+      usage: /<command> <player>
+      description: Adds the youtube prefix to a player

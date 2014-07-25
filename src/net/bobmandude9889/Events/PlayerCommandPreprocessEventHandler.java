@@ -1,41 +1,70 @@
 package net.bobmandude9889.Events;
 
+import net.bobmandude9889.Commands.Setyoutube;
+import net.bobmandude9889.Methods.ConvertColors;
 import net.bobmandude9889.iZenith.Variables;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class PlayerCommandPreprocessEventHandler implements Listener{
+import ru.tehkode.permissions.bukkit.PermissionsEx;
+
+public class PlayerCommandPreprocessEventHandler implements Listener {
 	JavaPlugin plugin = null;
 	Variables vars = null;
-	
-	public PlayerCommandPreprocessEventHandler(JavaPlugin plugin, Variables vars){
+
+	public PlayerCommandPreprocessEventHandler(JavaPlugin plugin, Variables vars) {
 		this.plugin = plugin;
 		this.vars = vars;
 	}
 
+	@SuppressWarnings("deprecation")
 	@EventHandler
 	public void onPlayerCommand(PlayerCommandPreprocessEvent e) {
 		String m = e.getMessage();
 		String[] aM = m.split(" ");
-		if (aM[0].equalsIgnoreCase("/plugins")
-				|| aM[0].equalsIgnoreCase("/pl")
+		if (aM[0].equalsIgnoreCase("/plugins") || aM[0].equalsIgnoreCase("/pl")
 				&& !e.getPlayer().isOp()) {
 			e.setCancelled(true);
 			e.getPlayer().sendMessage(
 					ChatColor.RED + "You do not have access to that!");
-		} else if(m.startsWith("/killall all") || m.startsWith("/killall itemframe")){
-			e.getPlayer().sendMessage(ChatColor.RED + "You cannot kill that type!");
+		} else if (m.startsWith("/killall all")
+				|| m.startsWith("/killall itemframe")) {
+			e.getPlayer().sendMessage(
+					ChatColor.RED + "You cannot kill that type!");
 			e.setCancelled(true);
-		} else if(m.startsWith("/kit") && e.getPlayer().getWorld().getName().equals("plotworld") && !e.getPlayer().isOp()){
-			e.getPlayer().sendMessage(ChatColor.RED + "You cannot use \"/kit\" in the plotworld");
+		} else if (m.startsWith("/kit")
+				&& e.getPlayer().getWorld().getName().equals("plotworld")
+				&& !e.getPlayer().isOp()) {
+			e.getPlayer().sendMessage(
+					ChatColor.RED + "You cannot use \"/kit\" in the plotworld");
 			e.setCancelled(true);
-		} else if(m.startsWith("/sethome") && e.getPlayer().getWorld().getName().equals("plotworld") && !e.getPlayer().isOp()){
-			e.getPlayer().sendMessage(ChatColor.RED + "You cannot use \"/sethome\" in the plotworld");
+		} else if (m.startsWith("/sethome")
+				&& e.getPlayer().getWorld().getName().equals("plotworld")
+				&& !e.getPlayer().isOp()) {
+			e.getPlayer().sendMessage(
+					ChatColor.RED
+							+ "You cannot use \"/sethome\" in the plotworld");
 			e.setCancelled(true);
+		} else if (m.startsWith("/pex user") && m.contains("group set")) {
+			if (e.getPlayer().isOp()) {
+				String[] split = m.split(" ");
+				Player receiver = Bukkit.getPlayer(split[1]);
+				if (PermissionsEx
+						.getUser(receiver)
+						.getPrefix()
+						.startsWith(
+								ConvertColors
+										.convertColors("&f&l(&4You&8Tube&f&l)")[0])) {
+					new Setyoutube().set(e.getPlayer(),
+							Bukkit.getPlayer(m.split(" ")[1]));
+				}
+			}
 		}
 	}
 }

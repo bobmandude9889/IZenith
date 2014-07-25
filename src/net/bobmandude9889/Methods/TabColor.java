@@ -7,9 +7,19 @@ import org.bukkit.entity.Player;
 
 public class TabColor {
 	public static String getName(Player player) {
+		ChatColor color = getColor(player);
+		String name = player.getName();
+		int length = name.length();
+		if(length > 14){
+			int subtract = length - 14;
+			name = name.substring(0,length - subtract - 1);
+		}
+		return color + name;
+	}
+	
+	public static ChatColor getColor(Player player){
 		Permission perm = IPermission.get();
 		ChatColor color = ChatColor.WHITE;
-		String name = player.getName();
 		if(perm.getPrimaryGroup(player).equalsIgnoreCase("beginner")){
 			color = ChatColor.GRAY;
 		}else if(perm.getPrimaryGroup(player).equalsIgnoreCase("donator")){
@@ -35,11 +45,6 @@ public class TabColor {
 		}else if(perm.getPrimaryGroup(player).equalsIgnoreCase("owner")){
 			color = ChatColor.DARK_BLUE;
 		}
-		int length = name.length();
-		if(length > 14){
-			int subtract = length - 14;
-			name = name.substring(0,length - subtract - 1);
-		}
-		return color + name;
+		return color;
 	}
 }
