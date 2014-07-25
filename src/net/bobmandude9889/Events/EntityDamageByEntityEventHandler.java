@@ -1,5 +1,6 @@
 package net.bobmandude9889.Events;
 
+import net.bobmandude9889.Commands.VoteShop;
 import net.bobmandude9889.Methods.ConvertColors;
 import net.bobmandude9889.Methods.GetDisplayName;
 import net.bobmandude9889.iZenith.Variables;
@@ -63,7 +64,7 @@ public class EntityDamageByEntityEventHandler implements Listener {
 						villager.setHealth(0.0);
 						vars.deleteVoteShop.remove(player);
 					} else {
-						vars.voteShopMain.open(player);
+						VoteShop.openVoteShop(player,vars);
 					}
 				}
 			}

@@ -9,6 +9,7 @@ import net.bobmandude9889.Commands.End;
 import net.bobmandude9889.Commands.IZCommand;
 import net.bobmandude9889.Commands.NoMobs;
 import net.bobmandude9889.Commands.NoOutFire;
+import net.bobmandude9889.Commands.PayCheck;
 import net.bobmandude9889.Commands.Pvp;
 import net.bobmandude9889.Commands.Ranks;
 import net.bobmandude9889.Commands.SetNoMobs;
@@ -87,6 +88,7 @@ public class Variables {
 		commands.add(new SetNoMobs(this.plugin, this));
 		commands.add(new VoteShop(this));
 		commands.add(new Setyoutube());
+		commands.add(new PayCheck());
 	}
 
 }

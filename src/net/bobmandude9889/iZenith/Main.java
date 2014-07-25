@@ -56,11 +56,15 @@ public class Main extends JavaPlugin implements Listener {
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
 		for (int i = 0; i < vars.commands.size(); i++) {
 			IZCommand command = vars.commands.get(i);
-			if (command.onlyPlayers() && !(sender instanceof Player)) {
-				sender.sendMessage(ChatColor.RED + "/" + command.getName() + " is only for players!");
-			} else if (command.getName().equalsIgnoreCase(cmd.getName())) {
-				command.onCommand(sender, cmd, commandLabel, args);
-				return true;
+			System.out.println(command.getName());
+			if (command.getName().equalsIgnoreCase(cmd.getName())) {
+				if (command.onlyPlayers() && !(sender instanceof Player)) {
+					sender.sendMessage(ChatColor.RED + "/" + command.getName() + " is only for players!");
+					return false;
+				} else {
+					command.onCommand(sender, cmd, commandLabel, args);
+					return true;
+				}
 			}
 		}
 		return false;

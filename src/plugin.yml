@@ -39,7 +39,7 @@ commands:
       usage: /<command>
       description: command
    voteshop:
-      usage: /<command> [create,delete]
+      usage: /<command> [create,delete,get,set,add] [player]
       description: vote shop commands
    startbroadcast:
       usage: /<command>
@@ -47,3 +47,6 @@ commands:
    setyoutube:
       usage: /<command> <player>
       description: Adds the youtube prefix to a player
+   paycheck:
+      usage: /<command> [vote]
+      description: Pay checker

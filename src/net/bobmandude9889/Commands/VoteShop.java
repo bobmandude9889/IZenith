@@ -1,10 +1,16 @@
 package net.bobmandude9889.Commands;
 
+import java.awt.List;
+import java.util.ArrayList;
+
+import net.bobmandude9889.GUI.GUI;
+import net.bobmandude9889.Methods.Item;
 import net.bobmandude9889.Methods.VotePoints;
 import net.bobmandude9889.iZenith.Variables;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -63,8 +69,13 @@ public class VoteShop implements IZCommand {
 	}
 
 	public static void openVoteShop(Player player, Variables vars) {
-
-		vars.voteShopMain.open(player);
+		GUI shop = vars.voteShopMain;
+		shop.addButton(Item.newItemMeta(Material.DIAMOND, ChatColor.BLUE + "" + VotePoints.get(player, vars), new ArrayList<String>()), 8, new Runnable(){
+			public void run(){
+				
+			}
+		});
+		shop.open(player);
 	}
 
 }
