@@ -4,9 +4,6 @@ import java.io.File;
 import java.io.IOException;
 
 import net.bobmandude9889.Commands.IZCommand;
-import net.bobmandude9889.Methods.LoadColors;
-import net.bobmandude9889.Methods.ScoreboardHandler;
-import net.bobmandude9889.Methods.SyncRepeatingTask;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -19,17 +16,17 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class Main extends JavaPlugin implements Listener {
 	Variables vars = null;
-	public SyncRepeatingTask ab = null;
-
+	public BroadcastingTask ab = null;
+	
 	public void onEnable() {
 		getConfig().options().copyDefaults(true);
 		saveDefaultConfig();
-		LoadColors.loadColors(this);
+		Util.loadColors(this);
 		if (getServer().getPluginManager().isPluginEnabled("CustomGUIAPI")) {
 			loadVars();
 			vars.er.registerGUIEvents();
 		}
-		ScoreboardHandler.init(vars);
+		Util.initScoreboard(vars);
 	}
 
 	public void onDisable() {
@@ -43,7 +40,7 @@ public class Main extends JavaPlugin implements Listener {
 		this.vars = new Variables(this);
 		GetConfig.loadConfigVars(this, vars);
 		vars.er.registerEvents();
-		ab = new SyncRepeatingTask(this, vars);
+		ab = new BroadcastingTask(this, vars);
 		ab.start();
 		File voteShopFile = new File(this.getDataFolder(), "VoteShop.yml");
 		FileConfiguration voteShopConfig;

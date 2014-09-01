@@ -1,6 +1,6 @@
 package net.bobmandude9889.Events;
 
-import net.bobmandude9889.Methods.ConvertColors;
+import net.bobmandude9889.iZenith.Util;
 import net.bobmandude9889.iZenith.Variables;
 
 import org.bukkit.Location;
@@ -14,7 +14,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPlaceEvent;
 
-public class BlockPlaceEventHandler implements Listener {
+public class BlockPlaceEventHandler extends Util implements Listener {
 
 	private Variables vars;
 
@@ -33,10 +33,10 @@ public class BlockPlaceEventHandler implements Listener {
 			Villager villager = (Villager) world.spawnEntity(loc,
 					EntityType.VILLAGER);
 			villager.setProfession(Profession.LIBRARIAN);
-			villager.setCustomName(ConvertColors.convertColors("&6&lPoint &f&lShop")[0]);
+			villager.setCustomName(parseColors("&6&lPoint &f&lShop")[0]);
 			villager.setCustomNameVisible(true);
 			vars.createVoteShop.remove(e.getPlayer());
 		}
 	}
-
+	
 }

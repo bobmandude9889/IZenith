@@ -5,8 +5,7 @@ import java.util.List;
 import net.bobmandude9889.Commands.VoteShop;
 import net.bobmandude9889.GUI.GUI;
 import net.bobmandude9889.GUI.GUIHandler;
-import net.bobmandude9889.Methods.ConvertColors;
-import net.bobmandude9889.Methods.Item;
+import net.bobmandude9889.iZenith.Util;
 import net.bobmandude9889.iZenith.Variables;
 
 import org.bukkit.ChatColor;
@@ -15,7 +14,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class EventRegisterer {
+public class EventRegisterer extends Util{
 	JavaPlugin plugin = null;
 	Variables vars = null;
 	PluginManager pm = null;
@@ -39,16 +38,16 @@ public class EventRegisterer {
 		vars.vote = new GUI(9, ChatColor.GREEN + "Vote", vars.handler);
 		pm.registerEvents(vars.handler, plugin);
 
-		vars.voteShopMain = new GUI(9, ConvertColors.convertColors("&6&lPoint&8&lShop")[0], vars.handler);
+		vars.voteShopMain = new GUI(9, parseColors("&6&lPoint&8&lShop")[0], vars.handler);
 
 		//Setting up kits
 		List<String> kitStringList = vars.voteShopConfig.getStringList("kit_shop");
 		int kitAmount = kitStringList.size();
 		int kitShopSize = kitAmount + (9 - kitAmount);
-		vars.voteShopKits = new GUI(kitShopSize, ConvertColors.convertColors("&a&lKits")[0], vars.handler);
+		vars.voteShopKits = new GUI(kitShopSize, parseColors("&a&lKits")[0], vars.handler);
 
 		//Adds back button for kits
-		vars.voteShopKits.addButton(Item.newItemMeta(Material.IRON_FENCE, ConvertColors.convertColors("&c&lBack")[0], "Back to categories", 1), kitShopSize - 1, new Runnable() {
+		vars.voteShopKits.addButton(newItemMeta(Material.IRON_FENCE, parseColors("&c&lBack")[0], "Back to categories", 1), kitShopSize - 1, new Runnable() {
 			public void run() {
 				VoteShop.openVoteShop(vars.voteShopKits.getWhoClicked(), vars);
 			}
@@ -58,24 +57,24 @@ public class EventRegisterer {
 		List<String> spawnerStringList = vars.voteShopConfig.getStringList("spawner_shop");
 		int spawnerAmount = spawnerStringList.size();
 		int spawnerShopSize = spawnerAmount + (9 - spawnerAmount);
-		vars.voteShopSpawners = new GUI(spawnerShopSize, ConvertColors.convertColors("&1&lSpawners")[0], vars.handler);
+		vars.voteShopSpawners = new GUI(spawnerShopSize, parseColors("&1&lSpawners")[0], vars.handler);
 
 		//Adds back button for spawners
-		vars.voteShopSpawners.addButton(Item.newItemMeta(Material.IRON_FENCE, ConvertColors.convertColors("&c&lBack")[0], "Back to categories", 1), spawnerShopSize - 1, new Runnable() {
+		vars.voteShopSpawners.addButton(newItemMeta(Material.IRON_FENCE, parseColors("&c&lBack")[0], "Back to categories", 1), spawnerShopSize - 1, new Runnable() {
 			public void run() {
 				VoteShop.openVoteShop(vars.voteShopSpawners.getWhoClicked(), vars);
 			}
 		});
 		
 		//Adds kits and spawners button to shop
-		ItemStack kits = Item.newItemMeta(Material.DIAMOND_CHESTPLATE, "&a&l&oKits", "&b&l&oPurchase kits here!", 1);
+		ItemStack kits = newItemMeta(Material.DIAMOND_CHESTPLATE, "&a&l&oKits", "&b&l&oPurchase kits here!", 1);
 		vars.voteShopMain.addButton(kits, 3, new Runnable() {
 			@Override
 			public void run() {
 				VoteShop.openKitShop(vars.voteShopMain.getWhoClicked(), vars);
 			}
 		});
-		ItemStack spawners = Item.newItemMeta(Material.MOB_SPAWNER, "&2&l&oSpawners", "&b&l&oPurchase mob spawners ,&b&l&ohere!", 1);
+		ItemStack spawners = newItemMeta(Material.MOB_SPAWNER, "&2&l&oSpawners", "&b&l&oPurchase mob spawners ,&b&l&ohere!", 1);
 		vars.voteShopMain.addButton(spawners, 5, new Runnable() {
 			@Override
 			public void run() {

@@ -1,7 +1,7 @@
 package net.bobmandude9889.Events;
 
 import net.bobmandude9889.Commands.Setyoutube;
-import net.bobmandude9889.Methods.ConvertColors;
+import net.bobmandude9889.iZenith.Util;
 import net.bobmandude9889.iZenith.Variables;
 
 import org.bukkit.Bukkit;
@@ -14,7 +14,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import ru.tehkode.permissions.bukkit.PermissionsEx;
 
-public class PlayerCommandPreprocessEventHandler implements Listener {
+public class PlayerCommandPreprocessEventHandler extends Util implements Listener {
 	JavaPlugin plugin = null;
 	Variables vars = null;
 
@@ -43,7 +43,7 @@ public class PlayerCommandPreprocessEventHandler implements Listener {
 		} else if (m.startsWith("/pex user") && m.contains("group set")) {
 			if (e.getPlayer().isOp()) {
 				Player receiver = Bukkit.getPlayer(aM[1]);
-				if (PermissionsEx.getUser(receiver).getPrefix().startsWith(ConvertColors.convertColors("&f&l(&4You&8Tube&f&l)")[0])) {
+				if (PermissionsEx.getUser(receiver).getPrefix().startsWith(parseColors("&f&l(&4You&8Tube&f&l)")[0])) {
 					Setyoutube.set(e.getPlayer(), Bukkit.getPlayer(aM[1]));
 				}
 			}

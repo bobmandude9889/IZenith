@@ -1,7 +1,7 @@
 package net.bobmandude9889.Events;
 
 import net.bobmandude9889.Commands.VoteShop;
-import net.bobmandude9889.Methods.ConvertColors;
+import net.bobmandude9889.iZenith.Util;
 import net.bobmandude9889.iZenith.Variables;
 
 import org.bukkit.entity.Entity;
@@ -11,7 +11,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 
-public class PlayerInteractEntityEventHandler implements Listener {
+public class PlayerInteractEntityEventHandler extends Util implements Listener {
 
 	private Variables vars;
 
@@ -25,7 +25,7 @@ public class PlayerInteractEntityEventHandler implements Listener {
 		if (ent.getType().equals(EntityType.VILLAGER)) {
 			Villager villager = (Villager) ent;
 			if (villager.getCustomName().equals(
-					ConvertColors.convertColors("&6&lPoint &f&lShop")[0])) {
+					parseColors("&6&lPoint &f&lShop")[0])) {
 				e.setCancelled(true);
 				if (vars.deleteVoteShop.contains(e.getPlayer())) {
 					villager.setHealth(0.0);

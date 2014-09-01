@@ -1,6 +1,6 @@
 package net.bobmandude9889.Events;
 
-import net.bobmandude9889.Methods.IsIn;
+import net.bobmandude9889.iZenith.Util;
 import net.bobmandude9889.iZenith.Variables;
 
 import org.bukkit.Location;
@@ -10,7 +10,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.CreatureSpawnEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class CreatureSpawnEventHandler implements Listener {
+public class CreatureSpawnEventHandler extends Util implements Listener {
 	JavaPlugin plugin = null;
 	Variables vars = null;
 
@@ -26,16 +26,14 @@ public class CreatureSpawnEventHandler implements Listener {
 			if (!((event.getEntityType().equals(EntityType.COW)
 					|| event.getEntityType().equals(EntityType.PIG) || event
 					.getEntityType().equals(EntityType.SHEEP))
-					&& location.getWorld().getName().equals("survival") && (IsIn
-						.isIn(location, new Location(
+					&& location.getWorld().getName().equals("survival") && (isIn(location, new Location(
 								location.getWorld(), 0, 73, 85),
 								new Location(location.getWorld(), 23, 74,
-										95)) || IsIn
-										.isIn(location, new Location(
+										95)) || isIn(location, new Location(
 												location.getWorld(), 57, 74, 95),
 												new Location(location.getWorld(), 80, 73,
 														85))))
-					&& IsIn.isIn(
+					&& isIn(
 							new Location(location.getWorld(), location
 									.getBlockX(), location.getBlockY(),
 									location.getBlockZ()),
