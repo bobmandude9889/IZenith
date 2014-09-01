@@ -28,42 +28,33 @@ public class PlayerCommandPreprocessEventHandler implements Listener {
 	public void onPlayerCommand(PlayerCommandPreprocessEvent e) {
 		String m = e.getMessage();
 		String[] aM = m.split(" ");
-		if (aM[0].equalsIgnoreCase("/plugins") || aM[0].equalsIgnoreCase("/pl")
-				&& !e.getPlayer().isOp()) {
+		if (aM[0].equalsIgnoreCase("/plugins") || aM[0].equalsIgnoreCase("/pl") && !e.getPlayer().isOp()) {
 			e.setCancelled(true);
-			e.getPlayer().sendMessage(
-					ChatColor.RED + "You do not have access to that!");
-		} else if (m.startsWith("/killall all")
-				|| m.startsWith("/killall itemframe")) {
-			e.getPlayer().sendMessage(
-					ChatColor.RED + "You cannot kill that type!");
+			e.getPlayer().sendMessage(ChatColor.RED + "You do not have access to that!");
+		} else if (m.startsWith("/killall all") || m.startsWith("/killall itemframe")) {
+			e.getPlayer().sendMessage(ChatColor.RED + "You cannot kill that type!");
 			e.setCancelled(true);
-		} else if (m.startsWith("/kit")
-				&& e.getPlayer().getWorld().getName().equals("plotworld")
-				&& !e.getPlayer().isOp()) {
-			e.getPlayer().sendMessage(
-					ChatColor.RED + "You cannot use \"/kit\" in the plotworld");
+		} else if (m.startsWith("/kit") && e.getPlayer().getWorld().getName().equals("plotworld") && !e.getPlayer().isOp()) {
+			e.getPlayer().sendMessage(ChatColor.RED + "You cannot use \"/kit\" in the plotworld");
 			e.setCancelled(true);
-		} else if (m.startsWith("/sethome")
-				&& e.getPlayer().getWorld().getName().equals("plotworld")
-				&& !e.getPlayer().isOp()) {
-			e.getPlayer().sendMessage(
-					ChatColor.RED
-							+ "You cannot use \"/sethome\" in the plotworld");
+		} else if (m.startsWith("/sethome") && e.getPlayer().getWorld().getName().equals("plotworld") && !e.getPlayer().isOp()) {
+			e.getPlayer().sendMessage(ChatColor.RED + "You cannot use \"/sethome\" in the plotworld");
 			e.setCancelled(true);
 		} else if (m.startsWith("/pex user") && m.contains("group set")) {
 			if (e.getPlayer().isOp()) {
-				String[] split = m.split(" ");
-				Player receiver = Bukkit.getPlayer(split[1]);
-				if (PermissionsEx
-						.getUser(receiver)
-						.getPrefix()
-						.startsWith(
-								ConvertColors
-										.convertColors("&f&l(&4You&8Tube&f&l)")[0])) {
-					new Setyoutube().set(e.getPlayer(),
-							Bukkit.getPlayer(m.split(" ")[1]));
+				Player receiver = Bukkit.getPlayer(aM[1]);
+				if (PermissionsEx.getUser(receiver).getPrefix().startsWith(ConvertColors.convertColors("&f&l(&4You&8Tube&f&l)")[0])) {
+					Setyoutube.set(e.getPlayer(), Bukkit.getPlayer(aM[1]));
 				}
+			}
+		} else if (m.startsWith("/kit")) {
+			Player player = e.getPlayer();
+			if(player.getWorld().equals(Bukkit.getWorld("swlobby"))){
+				e.setCancelled(true);
+				return;
+			}
+			if (aM.length < 3 || aM[2] == player.getName()) {
+				Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "pex user " + player.getName() + " remove essentials.kits." + aM[1]);
 			}
 		}
 	}

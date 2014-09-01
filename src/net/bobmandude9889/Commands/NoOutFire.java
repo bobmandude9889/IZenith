@@ -7,6 +7,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.permissions.Permission;
 
 public class NoOutFire implements IZCommand {
 
@@ -31,6 +32,16 @@ public class NoOutFire implements IZCommand {
 	@Override
 	public boolean onlyPlayers() {
 		return true;
+	}
+
+	@Override
+	public boolean hasPermission() {
+		return true;
+	}
+
+	@Override
+	public Permission getPermission() {
+		return new Permission("iZenith.nooutfire");
 	}
 
 }

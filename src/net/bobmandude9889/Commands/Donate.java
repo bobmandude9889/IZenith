@@ -5,6 +5,7 @@ import net.bobmandude9889.iZenith.Variables;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.permissions.Permission;
 
 public class Donate implements IZCommand{
 	
@@ -28,6 +29,16 @@ public class Donate implements IZCommand{
 	@Override
 	public boolean onlyPlayers() {
 		return true;
+	}
+
+	@Override
+	public boolean hasPermission() {
+		return false;
+	}
+
+	@Override
+	public Permission getPermission() {
+		return null;
 	}
 
 }

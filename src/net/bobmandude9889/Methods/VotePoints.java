@@ -30,6 +30,7 @@ public class VotePoints {
 			vars.points.remove(p);
 		}
 		vars.points.put(p, points);
+		saveConfig(vars);
 	}
 	
 	public static void saveConfig(Variables vars){

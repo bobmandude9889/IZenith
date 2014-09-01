@@ -5,6 +5,7 @@ import java.io.IOException;
 
 import net.bobmandude9889.Commands.IZCommand;
 import net.bobmandude9889.Methods.LoadColors;
+import net.bobmandude9889.Methods.ScoreboardHandler;
 import net.bobmandude9889.Methods.SyncRepeatingTask;
 
 import org.bukkit.ChatColor;
@@ -27,6 +28,14 @@ public class Main extends JavaPlugin implements Listener {
 		if (getServer().getPluginManager().isPluginEnabled("CustomGUIAPI")) {
 			loadVars();
 			vars.er.registerGUIEvents();
+		}
+		ScoreboardHandler.init(vars);
+	}
+
+	public void onDisable() {
+		for (Player p : vars.handler.getOpenInvs().keySet()) {
+			p.closeInventory();
+			p.sendMessage(ChatColor.RED + "A reload forced you to leave the shop.");
 		}
 	}
 
@@ -56,10 +65,13 @@ public class Main extends JavaPlugin implements Listener {
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
 		for (int i = 0; i < vars.commands.size(); i++) {
 			IZCommand command = vars.commands.get(i);
-			System.out.println(command.getName());
 			if (command.getName().equalsIgnoreCase(cmd.getName())) {
+				if (command.hasPermission() && !sender.hasPermission(command.getPermission())) {
+					sender.sendMessage(ChatColor.RED + "You do not have permission for that command.");
+					return true;
+				}
 				if (command.onlyPlayers() && !(sender instanceof Player)) {
-					sender.sendMessage(ChatColor.RED + "/" + command.getName() + " is only for players!");
+					sender.sendMessage(ChatColor.RED + command.getName() + " is only for players!");
 					return false;
 				} else {
 					command.onCommand(sender, cmd, commandLabel, args);

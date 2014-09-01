@@ -1,5 +1,6 @@
 package net.bobmandude9889.Commands;
 
+import net.bobmandude9889.Methods.IPermission;
 import net.bobmandude9889.Methods.TabColor;
 
 import org.bukkit.Bukkit;
@@ -8,6 +9,7 @@ import org.bukkit.Server;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.permissions.Permission;
 
 public class Setyoutube implements IZCommand {
 
@@ -23,18 +25,16 @@ public class Setyoutube implements IZCommand {
 			Server server = Bukkit.getServer();
 			@SuppressWarnings("deprecation")
 			Player player = server.getPlayer(args[0]);
-			if (player.isOp()) {
-				set((Player) sender, player);
-			}
+			set((Player) sender, player);
 		} else {
 			sender.sendMessage(ChatColor.RED + "Enter a player");
 		}
 	}
 
-	public void set(Player sender, Player player) {
+	public static void set(Player sender, Player player) {
 		sender.performCommand("pex user " + player.getName()
 				+ " prefix \"&f&l(&4You&8Tube&f&l)&"
-				+ TabColor.getColor(player) + " \"");
+				+ TabColor.getColor(IPermission.get().getPrimaryGroup(player)) + " \"");
 		sender.performCommand("pex user " + player.getName()
 				+ " add essentials.kits.YouTube");
 	}
@@ -42,6 +42,16 @@ public class Setyoutube implements IZCommand {
 	@Override
 	public boolean onlyPlayers() {
 		return true;
+	}
+
+	@Override
+	public boolean hasPermission() {
+		return true;
+	}
+
+	@Override
+	public Permission getPermission() {
+		return new Permission("izenith.setyoutube");
 	}
 
 }

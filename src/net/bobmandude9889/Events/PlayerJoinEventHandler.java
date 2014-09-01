@@ -1,6 +1,7 @@
 package net.bobmandude9889.Events;
 
 import net.bobmandude9889.Methods.ConvertColors;
+import net.bobmandude9889.Methods.ScoreboardHandler;
 import net.bobmandude9889.Methods.TabColor;
 import net.bobmandude9889.iZenith.Variables;
 
@@ -27,5 +28,6 @@ public class PlayerJoinEventHandler implements Listener{
 		message = ConvertColors.convertColors(message)[0];
 		e.setJoinMessage(message);
 		player.setPlayerListName(TabColor.getName(player));
+		ScoreboardHandler.setTeam(player, vars);
 	}
 }

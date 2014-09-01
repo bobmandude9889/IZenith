@@ -5,6 +5,7 @@ import java.util.Random;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.permissions.Permission;
 
 public class PayCheck implements IZCommand {
 
@@ -88,6 +89,16 @@ public class PayCheck implements IZCommand {
 	@Override
 	public boolean onlyPlayers() {
 		return false;
+	}
+
+	@Override
+	public boolean hasPermission() {
+		return true;
+	}
+
+	@Override
+	public Permission getPermission() {
+		return new Permission("iZenith.paycheck");
 	}
 
 }

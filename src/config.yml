@@ -7,3 +7,17 @@ quit-message: '%PLAYER%'
 broadcast_messages:
   - 'Message 1'
   - 'Message 2'
+# format (group name,color code)
+colors:
+  - 'beginner,7'
+  - 'donator,d'
+  - 'knight,9'
+  - 'slayer,e'
+  - 'dragon,6'
+  - 'lord,2'
+  - 'god,b'
+  - 'mod,3'
+  - 'admin,5'
+  - 'dev,c'
+  - 'owner,1'
+  - 'helper,a'

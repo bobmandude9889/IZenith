@@ -29,25 +29,25 @@ public class EntityDamageByEntityEventHandler implements Listener {
 			Player player = (Player) e.getEntity();
 			PlayerInventory inv = player.getInventory();
 			String hName = GetDisplayName.getName(inv.getHelmet());
-			if (!hName.equals(null)
+			if (hName != null
 					&& hName.equals("[" + ChatColor.GREEN + "Emerald hat"
 							+ ChatColor.WHITE + "]")) {
 				e.setDamage(e.getDamage() - 2);
 			}
 			String cName = GetDisplayName.getName(inv.getChestplate());
-			if (!cName.equals(null)
+			if (cName != null
 					&& cName.equals("[" + ChatColor.GREEN + "Emerald top"
 							+ ChatColor.WHITE + "]")) {
 				e.setDamage(e.getDamage() - 5);
 			}
 			String lName = GetDisplayName.getName(inv.getLeggings());
-			if (!lName.equals(null)
+			if (lName != null
 					&& lName.equals("[" + ChatColor.GREEN + "Emerald bottom"
 							+ ChatColor.WHITE + "]")) {
 				e.setDamage(e.getDamage() - 4);
 			}
 			String bName = GetDisplayName.getName(inv.getBoots());
-			if (!bName.equals(null)
+			if (bName != null
 					&& bName.equals("[" + ChatColor.GREEN + "Emerald boots"
 							+ ChatColor.WHITE + "]")) {
 				e.setDamage(e.getDamage() - 2);

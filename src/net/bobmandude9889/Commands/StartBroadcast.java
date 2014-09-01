@@ -4,6 +4,7 @@ import net.bobmandude9889.iZenith.Main;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.permissions.Permission;
 
 public class StartBroadcast implements IZCommand{
 	
@@ -19,16 +20,23 @@ public class StartBroadcast implements IZCommand{
 	}
 
 	@Override
-	public void onCommand(CommandSender sender, Command cmd,
-			String commandLabel, String[] args) {
-		if(sender.isOp()){
-			main.ab.start();
-		}
+	public void onCommand(CommandSender sender, Command cmd,String commandLabel, String[] args) {
+		main.ab.start();
 	}
 
 	@Override
 	public boolean onlyPlayers() {
 		return false;
+	}
+
+	@Override
+	public boolean hasPermission() {
+		return true;
+	}
+
+	@Override
+	public Permission getPermission() {
+		return new Permission("izenith.startbroadcast");
 	}
 
 }

@@ -7,6 +7,7 @@ import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.permissions.Permission;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class SetNoMobs implements IZCommand {
@@ -28,10 +29,7 @@ public class SetNoMobs implements IZCommand {
 	public void onCommand(CommandSender sender, Command cmd,
 			String commandLabel, String[] args) {
 		Player player = (Player) sender;
-		if (player.isOp()
-				&& vars.selection1.containsKey(player.getName())
-				&& vars.selection1.containsKey(player.getName())
-				&& vars.selectors.contains(player)) {
+		if (vars.selection1.containsKey(player.getName()) && vars.selection1.containsKey(player.getName()) && vars.selectors.contains(player)) {
 			Location location = vars.selection1.get(player.getName());
 			plugin.getConfig().set("no_mob_area.s1.x", location.getBlockX());
 			plugin.getConfig().set("no_mob_area.s1.y", location.getBlockY());
@@ -52,6 +50,16 @@ public class SetNoMobs implements IZCommand {
 	@Override
 	public boolean onlyPlayers() {
 		return true;
+	}
+
+	@Override
+	public boolean hasPermission() {
+		return true;
+	}
+
+	@Override
+	public Permission getPermission() {
+		return new Permission("izenith.setnomobs");
 	}
 
 }

@@ -1,13 +1,12 @@
 package net.bobmandude9889.Methods;
 
-import net.milkbowl.vault.permission.Permission;
-
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 public class TabColor {
 	public static String getName(Player player) {
-		ChatColor color = getColor(player);
+		ChatColor color = getColor(IPermission.get().getPrimaryGroup(player));
 		String name = player.getName();
 		int length = name.length();
 		if(length > 14){
@@ -17,33 +16,14 @@ public class TabColor {
 		return color + name;
 	}
 	
-	public static ChatColor getColor(Player player){
-		Permission perm = IPermission.get();
+	public static ChatColor getColor(String group){
 		ChatColor color = ChatColor.WHITE;
-		if(perm.getPrimaryGroup(player).equalsIgnoreCase("beginner")){
-			color = ChatColor.GRAY;
-		}else if(perm.getPrimaryGroup(player).equalsIgnoreCase("donator")){
-			color = ChatColor.LIGHT_PURPLE;
-		}else if(perm.getPrimaryGroup(player).equalsIgnoreCase("knight")){
-			color = ChatColor.BLUE;
-		}else if(perm.getPrimaryGroup(player).equalsIgnoreCase("slayer")){
-			color = ChatColor.YELLOW;
-		}else if(perm.getPrimaryGroup(player).equalsIgnoreCase("dragon")){
-			color = ChatColor.GOLD;
-		}else if(perm.getPrimaryGroup(player).equalsIgnoreCase("donator")){
-			color = ChatColor.LIGHT_PURPLE;
-		}else if(perm.getPrimaryGroup(player).equalsIgnoreCase("lord")){
-			color = ChatColor.DARK_GREEN;
-		}else if(perm.getPrimaryGroup(player).equalsIgnoreCase("god")){
-			color = ChatColor.AQUA;
-		}else if(perm.getPrimaryGroup(player).equalsIgnoreCase("mod")){
-			color = ChatColor.DARK_AQUA;
-		}else if(perm.getPrimaryGroup(player).equalsIgnoreCase("admin")){
-			color = ChatColor.DARK_PURPLE;
-		}else if(perm.getPrimaryGroup(player).equalsIgnoreCase("dev")){
-			color = ChatColor.RED;
-		}else if(perm.getPrimaryGroup(player).equalsIgnoreCase("owner")){
-			color = ChatColor.DARK_BLUE;
+		for(String s : Bukkit.getPluginManager().getPlugin("iZenith").getConfig().getStringList("colors")){
+			String[] sp = s.split(",");
+			if(group.equalsIgnoreCase(sp[0])){
+				color = ChatColor.getByChar(sp[1].toCharArray()[0]);
+				break;
+			}
 		}
 		return color;
 	}

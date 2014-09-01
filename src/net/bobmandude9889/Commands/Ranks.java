@@ -7,6 +7,7 @@ import net.bobmandude9889.iZenith.Variables;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.permissions.Permission;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class Ranks implements IZCommand{
@@ -36,6 +37,16 @@ public class Ranks implements IZCommand{
 	@Override
 	public boolean onlyPlayers() {
 		return false;
+	}
+
+	@Override
+	public boolean hasPermission() {
+		return false;
+	}
+
+	@Override
+	public Permission getPermission() {
+		return null;
 	}
 	
 }

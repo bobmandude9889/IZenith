@@ -6,6 +6,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.permissions.Permission;
 
 public class NoMobs implements IZCommand {
 
@@ -38,6 +39,16 @@ public class NoMobs implements IZCommand {
 	@Override
 	public boolean onlyPlayers() {
 		return true;
+	}
+
+	@Override
+	public boolean hasPermission() {
+		return false;
+	}
+
+	@Override
+	public Permission getPermission() {
+		return null;
 	}
 
 }

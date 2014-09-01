@@ -25,7 +25,7 @@ public class EntityDamageEventHandler implements Listener{
 		if (e.getEntity() instanceof Player) {
 			Player player = (Player) e.getEntity();
 			PlayerInventory inv = player.getInventory();
-			if (inv.getHelmet().getType().equals(Material.LEATHER_HELMET)
+			if (inv.getHelmet() != null && inv.getHelmet().getType().equals(Material.LEATHER_HELMET)
 					&& inv.getHelmet()
 							.getItemMeta()
 							.getDisplayName()
