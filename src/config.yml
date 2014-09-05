@@ -21,3 +21,8 @@ colors:
   - 'dev,c'
   - 'owner,1'
   - 'helper,a'
+  
+duels_teleport_message: Teleporting in 5 seconds
+duels_teleport_delay: 5
+duels_request_timeout: 60
+duels_kit: Tools

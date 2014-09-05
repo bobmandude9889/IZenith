@@ -5,7 +5,7 @@ import java.util.List;
 import net.bobmandude9889.Commands.VoteShop;
 import net.bobmandude9889.GUI.GUI;
 import net.bobmandude9889.GUI.GUIHandler;
-import net.bobmandude9889.iZenith.Util;
+import net.bobmandude9889.iZenith.IZUtil;
 import net.bobmandude9889.iZenith.Variables;
 
 import org.bukkit.ChatColor;
@@ -14,7 +14,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class EventRegisterer extends Util{
+public class EventRegisterer extends IZUtil{
 	JavaPlugin plugin = null;
 	Variables vars = null;
 	PluginManager pm = null;

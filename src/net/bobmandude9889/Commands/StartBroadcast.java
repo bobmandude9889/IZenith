@@ -1,17 +1,18 @@
 package net.bobmandude9889.Commands;
 
+import net.bobmandude9889.iZenith.IZUtil;
 import net.bobmandude9889.iZenith.Main;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.permissions.Permission;
 
-public class StartBroadcast implements IZCommand{
+public class StartBroadcast extends IZUtil implements IZCommand{
 	
 	Main main;
 	
-	public StartBroadcast(Main main){
-		this.main = main;
+	public StartBroadcast(){
+		this.main = getMain();
 	}
 	
 	@Override

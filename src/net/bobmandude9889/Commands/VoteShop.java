@@ -3,7 +3,7 @@ package net.bobmandude9889.Commands;
 import java.util.List;
 
 import net.bobmandude9889.GUI.GUI;
-import net.bobmandude9889.iZenith.Util;
+import net.bobmandude9889.iZenith.IZUtil;
 import net.bobmandude9889.iZenith.Variables;
 
 import org.bukkit.Bukkit;
@@ -15,12 +15,12 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.permissions.Permission;
 
-public class VoteShop extends Util implements IZCommand {
+public class VoteShop extends IZUtil implements IZCommand {
 
 	Variables vars;
 
-	public VoteShop(Variables vars) {
-		this.vars = vars;
+	public VoteShop() {
+		this.vars = getVars();
 	}
 
 	@Override

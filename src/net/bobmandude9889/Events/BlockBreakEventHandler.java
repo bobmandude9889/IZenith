@@ -1,5 +1,6 @@
 package net.bobmandude9889.Events;
 
+import net.bobmandude9889.iZenith.IZUtil;
 import net.bobmandude9889.iZenith.Variables;
 
 import org.bukkit.ChatColor;
@@ -12,14 +13,14 @@ import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class BlockBreakEventHandler implements Listener{
+public class BlockBreakEventHandler extends IZUtil implements Listener{
 	
 	JavaPlugin plugin = null;
 	Variables vars = null;
 	
-	public BlockBreakEventHandler(JavaPlugin plugin, Variables vars){
-		this.plugin = plugin;
-		this.vars = vars;
+	public BlockBreakEventHandler(){
+		this.plugin = getMain();
+		this.vars = getVars();
 	}
 	
 	@EventHandler

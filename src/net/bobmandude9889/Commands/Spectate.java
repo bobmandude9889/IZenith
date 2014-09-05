@@ -1,5 +1,6 @@
 package net.bobmandude9889.Commands;
 
+import net.bobmandude9889.iZenith.IZUtil;
 import net.bobmandude9889.iZenith.Variables;
 
 import org.bukkit.Bukkit;
@@ -8,12 +9,12 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.permissions.Permission;
 
-public class Spectate implements IZCommand {
+public class Spectate extends IZUtil implements IZCommand {
 	
 	Variables vars;
 	
-	public Spectate(Variables vars){
-		this.vars = vars;
+	public Spectate(){
+		this.vars = getVars();
 	}
 	
 	@Override

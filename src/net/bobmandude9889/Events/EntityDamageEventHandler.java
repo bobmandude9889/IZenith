@@ -1,5 +1,6 @@
 package net.bobmandude9889.Events;
 
+import net.bobmandude9889.iZenith.IZUtil;
 import net.bobmandude9889.iZenith.Variables;
 
 import org.bukkit.ChatColor;
@@ -11,13 +12,13 @@ import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class EntityDamageEventHandler implements Listener{
+public class EntityDamageEventHandler extends IZUtil implements Listener{
 	JavaPlugin plugin = null;
 	Variables vars = null;
 	
-	public EntityDamageEventHandler(JavaPlugin plugin, Variables vars){
-		this.plugin = plugin;
-		this.vars = vars;
+	public EntityDamageEventHandler(){
+		this.plugin = getMain();
+		this.vars = getVars();
 	}
 	
 	@EventHandler

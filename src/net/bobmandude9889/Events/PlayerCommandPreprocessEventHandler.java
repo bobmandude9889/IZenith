@@ -1,7 +1,7 @@
 package net.bobmandude9889.Events;
 
 import net.bobmandude9889.Commands.Setyoutube;
-import net.bobmandude9889.iZenith.Util;
+import net.bobmandude9889.iZenith.IZUtil;
 import net.bobmandude9889.iZenith.Variables;
 
 import org.bukkit.Bukkit;
@@ -14,13 +14,13 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import ru.tehkode.permissions.bukkit.PermissionsEx;
 
-public class PlayerCommandPreprocessEventHandler extends Util implements Listener {
+public class PlayerCommandPreprocessEventHandler extends IZUtil implements Listener {
 	JavaPlugin plugin = null;
 	Variables vars = null;
 
-	public PlayerCommandPreprocessEventHandler(JavaPlugin plugin, Variables vars) {
-		this.plugin = plugin;
-		this.vars = vars;
+	public PlayerCommandPreprocessEventHandler() {
+		this.plugin = getMain();
+		this.vars = getVars();
 	}
 
 	@SuppressWarnings("deprecation")

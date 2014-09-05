@@ -1,6 +1,6 @@
 package net.bobmandude9889.Commands;
 
-import net.bobmandude9889.iZenith.Util;
+import net.bobmandude9889.iZenith.IZUtil;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -10,7 +10,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.permissions.Permission;
 
-public class Setyoutube extends Util implements IZCommand {
+public class Setyoutube extends IZUtil implements IZCommand {
 
 	@Override
 	public String getName() {

@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import net.bobmandude9889.Commands.Donator;
+import net.bobmandude9889.Commands.Duel;
 import net.bobmandude9889.Commands.End;
 import net.bobmandude9889.Commands.IZCommand;
 import net.bobmandude9889.Commands.NoMobs;
@@ -17,6 +18,7 @@ import net.bobmandude9889.Commands.Setyoutube;
 import net.bobmandude9889.Commands.Spectate;
 import net.bobmandude9889.Commands.StartBroadcast;
 import net.bobmandude9889.Commands.VoteShop;
+import net.bobmandude9889.Duels.Arena;
 import net.bobmandude9889.Events.BlockBreakEventHandler;
 import net.bobmandude9889.Events.BlockFadeEventHandler;
 import net.bobmandude9889.Events.BlockPlaceEventHandler;
@@ -68,35 +70,38 @@ public class Variables {
 	public Scoreboard scoreboard = manager.getMainScoreboard();
 	public List<Team> teams = new ArrayList<Team>();
 	public HashMap<Player,Player> spectate = new HashMap<Player,Player>();
+	public List<Arena> arenas = new ArrayList<Arena>();
+	public HashMap<Player, Arena> duels = new HashMap<Player, Arena>();
 	
 	public Variables(JavaPlugin plugin) {
 		this.plugin = plugin;
 		er = new EventRegisterer(this.plugin, this);
 		
-		listeners.add(new BlockBreakEventHandler(this.plugin, this));
-		listeners.add(new BlockFadeEventHandler(this.plugin, this));
-		listeners.add(new CreatureSpawnEventHandler(this.plugin, this));
-		listeners.add(new EntityDamageEventHandler(this.plugin, this));
-		listeners.add(new PlayerCommandPreprocessEventHandler(this.plugin, this));
-		listeners.add(new PlayerInteractEventHandler(this.plugin, this));
-		listeners.add(new PlayerJoinEventHandler(this.plugin, this));
-		listeners.add(new PlayerQuitEventHandler(this.plugin, this));
-		listeners.add(new EntityDamageByEntityEventHandler(this));
-		listeners.add(new PluginEnableEventHandler(er));
-		listeners.add(new BlockPlaceEventHandler(this));
-		listeners.add(new PlayerInteractEntityEventHandler(this));
-		commands.add(new StartBroadcast((Main) this.plugin));
+		listeners.add(new BlockBreakEventHandler());
+		listeners.add(new BlockFadeEventHandler());
+		listeners.add(new CreatureSpawnEventHandler());
+		listeners.add(new EntityDamageEventHandler());
+		listeners.add(new PlayerCommandPreprocessEventHandler());
+		listeners.add(new PlayerInteractEventHandler());
+		listeners.add(new PlayerJoinEventHandler());
+		listeners.add(new PlayerQuitEventHandler());
+		listeners.add(new EntityDamageByEntityEventHandler());
+		listeners.add(new PluginEnableEventHandler(this.er));
+		listeners.add(new BlockPlaceEventHandler());
+		listeners.add(new PlayerInteractEntityEventHandler());
+		commands.add(new StartBroadcast());
 		commands.add(new Donator());
 		commands.add(new End());
-		commands.add(new NoMobs(this));
+		commands.add(new NoMobs());
 		commands.add(new NoOutFire());
 		commands.add(new Pvp());
-		commands.add(new Ranks(this.plugin, this));
-		commands.add(new SetNoMobs(this.plugin, this));
-		commands.add(new VoteShop(this));
+		commands.add(new Ranks());
+		commands.add(new SetNoMobs());
+		commands.add(new VoteShop());
 		commands.add(new Setyoutube());
 		commands.add(new PayCheck());
-		commands.add(new Spectate(this));
+		commands.add(new Spectate());
+		commands.add(new Duel());
 	}
 
 }

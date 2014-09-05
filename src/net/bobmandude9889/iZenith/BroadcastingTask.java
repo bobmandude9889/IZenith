@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class BroadcastingTask extends Util{
+public class BroadcastingTask extends IZUtil{
 	
 	JavaPlugin plugin = null;
 	Variables vars = null;

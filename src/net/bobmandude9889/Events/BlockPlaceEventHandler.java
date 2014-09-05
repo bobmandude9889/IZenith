@@ -1,6 +1,6 @@
 package net.bobmandude9889.Events;
 
-import net.bobmandude9889.iZenith.Util;
+import net.bobmandude9889.iZenith.IZUtil;
 import net.bobmandude9889.iZenith.Variables;
 
 import org.bukkit.Location;
@@ -14,12 +14,12 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPlaceEvent;
 
-public class BlockPlaceEventHandler extends Util implements Listener {
+public class BlockPlaceEventHandler extends IZUtil implements Listener {
 
 	private Variables vars;
 
-	public BlockPlaceEventHandler(Variables vars) {
-		this.vars = vars;
+	public BlockPlaceEventHandler() {
+		this.vars = getVars();
 	}
 
 	@EventHandler

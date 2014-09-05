@@ -15,18 +15,18 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class Main extends JavaPlugin implements Listener {
-	Variables vars = null;
+	public Variables vars = null;
 	public BroadcastingTask ab = null;
 	
 	public void onEnable() {
 		getConfig().options().copyDefaults(true);
 		saveDefaultConfig();
-		Util.loadColors(this);
+		IZUtil.loadColors(this);
 		if (getServer().getPluginManager().isPluginEnabled("CustomGUIAPI")) {
 			loadVars();
 			vars.er.registerGUIEvents();
 		}
-		Util.initScoreboard(vars);
+		IZUtil.initScoreboard(vars);
 	}
 
 	public void onDisable() {

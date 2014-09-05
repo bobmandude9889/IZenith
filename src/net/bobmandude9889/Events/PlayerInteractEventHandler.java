@@ -2,6 +2,7 @@ package net.bobmandude9889.Events;
 
 import java.util.List;
 
+import net.bobmandude9889.iZenith.IZUtil;
 import net.bobmandude9889.iZenith.Variables;
 
 import org.bukkit.ChatColor;
@@ -15,13 +16,13 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class PlayerInteractEventHandler implements Listener{
+public class PlayerInteractEventHandler extends IZUtil implements Listener{
 	JavaPlugin plugin = null;
 	Variables vars = null;
 	
-	public PlayerInteractEventHandler(JavaPlugin plugin, Variables vars){
-		this.plugin = plugin;
-		this.vars = vars;
+	public PlayerInteractEventHandler(){
+		this.plugin = getMain();
+		this.vars = getVars();
 	}
 	
 	@EventHandler
