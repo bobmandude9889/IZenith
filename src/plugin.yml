@@ -1,5 +1,5 @@
 name: iZenith
-version: 1.10
+version: 1.12
 main: net.bobmandude9889.iZenith.Main
 author: bobmandude9889
 depend: [CustomGUIAPI,Vault]
@@ -50,7 +50,12 @@ commands:
    paycheck:
       usage: /<command> [vote]
       description: Pay checker
-      
+   duel:
+      usage: /<command> [<player>, accept <player>, deny <player>] 
+      description: Duel a player.
+   contest:
+      usage: /<command> [enter,list]
+      description: Contest  
 permissions:
    izenith.nooutfire:
       description: Gives access to /nooutfire

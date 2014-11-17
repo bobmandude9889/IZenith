@@ -11,13 +11,8 @@ import org.bukkit.event.entity.CreatureSpawnEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class CreatureSpawnEventHandler extends IZUtil implements Listener {
-	JavaPlugin plugin = null;
-	Variables vars = null;
-
-	public CreatureSpawnEventHandler() {
-		this.plugin = getMain();
-		this.vars = getVars();
-	}
+	JavaPlugin plugin = getMain();
+	Variables vars = getVars();
 
 	@EventHandler
 	public void onCreatureSpawn(CreatureSpawnEvent event) {

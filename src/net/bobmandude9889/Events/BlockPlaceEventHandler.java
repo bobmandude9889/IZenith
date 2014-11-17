@@ -1,7 +1,6 @@
 package net.bobmandude9889.Events;
 
 import net.bobmandude9889.iZenith.IZUtil;
-import net.bobmandude9889.iZenith.Variables;
 
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -16,15 +15,9 @@ import org.bukkit.event.block.BlockPlaceEvent;
 
 public class BlockPlaceEventHandler extends IZUtil implements Listener {
 
-	private Variables vars;
-
-	public BlockPlaceEventHandler() {
-		this.vars = getVars();
-	}
-
 	@EventHandler
 	public void onBlockPlace(BlockPlaceEvent e) {
-		if (vars.createVoteShop.contains(e.getPlayer())) {
+		if (getVars().createVoteShop.contains(e.getPlayer())) {
 			Block block = e.getBlock();
 			block.setType(Material.AIR);
 			Location loc = block.getLocation();
@@ -35,7 +28,7 @@ public class BlockPlaceEventHandler extends IZUtil implements Listener {
 			villager.setProfession(Profession.LIBRARIAN);
 			villager.setCustomName(parseColors("&6&lPoint &f&lShop")[0]);
 			villager.setCustomNameVisible(true);
-			vars.createVoteShop.remove(e.getPlayer());
+			getVars().createVoteShop.remove(e.getPlayer());
 		}
 	}
 	

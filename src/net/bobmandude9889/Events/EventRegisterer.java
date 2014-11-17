@@ -49,7 +49,7 @@ public class EventRegisterer extends IZUtil{
 		//Adds back button for kits
 		vars.voteShopKits.addButton(newItemMeta(Material.IRON_FENCE, parseColors("&c&lBack")[0], "Back to categories", 1), kitShopSize - 1, new Runnable() {
 			public void run() {
-				VoteShop.openVoteShop(vars.voteShopKits.getWhoClicked(), vars);
+				VoteShop.openVoteShop(vars.voteShopKits.getWhoClicked());
 			}
 		});
 		
@@ -62,7 +62,7 @@ public class EventRegisterer extends IZUtil{
 		//Adds back button for spawners
 		vars.voteShopSpawners.addButton(newItemMeta(Material.IRON_FENCE, parseColors("&c&lBack")[0], "Back to categories", 1), spawnerShopSize - 1, new Runnable() {
 			public void run() {
-				VoteShop.openVoteShop(vars.voteShopSpawners.getWhoClicked(), vars);
+				VoteShop.openVoteShop(vars.voteShopSpawners.getWhoClicked());
 			}
 		});
 		
@@ -71,14 +71,14 @@ public class EventRegisterer extends IZUtil{
 		vars.voteShopMain.addButton(kits, 3, new Runnable() {
 			@Override
 			public void run() {
-				VoteShop.openKitShop(vars.voteShopMain.getWhoClicked(), vars);
+				VoteShop.openKitShop(vars.voteShopMain.getWhoClicked());
 			}
 		});
 		ItemStack spawners = newItemMeta(Material.MOB_SPAWNER, "&2&l&oSpawners", "&b&l&oPurchase mob spawners ,&b&l&ohere!", 1);
 		vars.voteShopMain.addButton(spawners, 5, new Runnable() {
 			@Override
 			public void run() {
-				VoteShop.openSpawnerShop(vars.voteShopMain.getWhoClicked(), vars);
+				VoteShop.openSpawnerShop(vars.voteShopMain.getWhoClicked());
 			}
 		});
 

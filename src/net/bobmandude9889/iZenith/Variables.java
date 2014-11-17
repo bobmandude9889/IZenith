@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import net.bobmandude9889.Commands.Contest;
 import net.bobmandude9889.Commands.Donator;
 import net.bobmandude9889.Commands.Duel;
 import net.bobmandude9889.Commands.End;
@@ -102,6 +103,7 @@ public class Variables {
 		commands.add(new PayCheck());
 		commands.add(new Spectate());
 		commands.add(new Duel());
+		commands.add(new Contest());
 	}
 
 }

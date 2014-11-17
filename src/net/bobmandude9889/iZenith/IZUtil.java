@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import net.milkbowl.vault.economy.Economy;
 import net.milkbowl.vault.permission.Permission;
 
 import org.bukkit.Bukkit;
@@ -46,6 +47,15 @@ public class IZUtil{
         }
         return permission;
     }
+	
+	public static Economy getEconomy(){
+		Economy economy = null;
+		RegisteredServiceProvider<Economy> economyProvider = Bukkit.getServer().getServicesManager().getRegistration(net.milkbowl.vault.economy.Economy.class);
+		if(economyProvider != null){
+			economy = economyProvider.getProvider();
+		}
+		return economy;
+	}
 	
 	public static boolean isIn(Location loc1, Location loc2, Location loc3) {
 		int n = 0;
@@ -95,6 +105,12 @@ public class IZUtil{
 			im.setLore(loreL);
 		}
 		is.setItemMeta(im);
+		return is;
+	}
+	
+	public static ItemStack newItemMeta(Material material, String name, String lore, int i, short durability) {
+		ItemStack is = newItemMeta(material,name,lore,i);
+		is.setDurability(durability);
 		return is;
 	}
 	

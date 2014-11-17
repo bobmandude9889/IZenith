@@ -13,13 +13,8 @@ import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class EntityDamageEventHandler extends IZUtil implements Listener{
-	JavaPlugin plugin = null;
-	Variables vars = null;
-	
-	public EntityDamageEventHandler(){
-		this.plugin = getMain();
-		this.vars = getVars();
-	}
+	JavaPlugin plugin = getMain();
+	Variables vars = getVars();
 	
 	@EventHandler
 	public void onEntityDamage(EntityDamageEvent e) {

@@ -10,13 +10,8 @@ import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class PlayerQuitEventHandler extends IZUtil implements Listener{
-	JavaPlugin plugin = null;
-	Variables vars = null;
-	
-	public PlayerQuitEventHandler(){
-		this.plugin = getMain();
-		this.vars = getVars();
-	}
+	JavaPlugin plugin = getMain();
+	Variables vars = getVars();
 	
 	@EventHandler
 	public void onPlayerQuit(PlayerQuitEvent event) {

@@ -2,7 +2,6 @@ package net.bobmandude9889.Events;
 
 import net.bobmandude9889.Commands.VoteShop;
 import net.bobmandude9889.iZenith.IZUtil;
-import net.bobmandude9889.iZenith.Variables;
 
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Entity;
@@ -15,12 +14,6 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.inventory.PlayerInventory;
 
 public class EntityDamageByEntityEventHandler extends IZUtil implements Listener {
-
-	Variables vars;
-
-	public EntityDamageByEntityEventHandler() {
-		this.vars = getVars();
-	}
 
 	@EventHandler
 	public void onEntityDamage(EntityDamageByEntityEvent e) {
@@ -59,11 +52,11 @@ public class EntityDamageByEntityEventHandler extends IZUtil implements Listener
 				if (villager.getCustomName().equals(
 						parseColors("&6&lPoint &f&lShop")[0])) {
 					e.setCancelled(true);
-					if (vars.deleteVoteShop.contains(player)) {
+					if (getVars().deleteVoteShop.contains(player)) {
 						villager.setHealth(0.0);
-						vars.deleteVoteShop.remove(player);
+						getVars().deleteVoteShop.remove(player);
 					} else {
-						VoteShop.openVoteShop(player,vars);
+						VoteShop.openVoteShop(player);
 					}
 				}
 			}

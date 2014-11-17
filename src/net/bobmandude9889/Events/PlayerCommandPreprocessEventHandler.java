@@ -15,13 +15,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 import ru.tehkode.permissions.bukkit.PermissionsEx;
 
 public class PlayerCommandPreprocessEventHandler extends IZUtil implements Listener {
-	JavaPlugin plugin = null;
-	Variables vars = null;
-
-	public PlayerCommandPreprocessEventHandler() {
-		this.plugin = getMain();
-		this.vars = getVars();
-	}
+	JavaPlugin plugin = getMain();
+	Variables vars = getVars();
 
 	@SuppressWarnings("deprecation")
 	@EventHandler
@@ -55,6 +50,12 @@ public class PlayerCommandPreprocessEventHandler extends IZUtil implements Liste
 			}
 			if (aM.length < 3 || aM[2] == player.getName()) {
 				Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "pex user " + player.getName() + " remove essentials.kits." + aM[1]);
+			}
+		} else if (aM[0].equalsIgnoreCase("/pv") || aM[0].equalsIgnoreCase("/playervaults")){
+			Player player = e.getPlayer();
+			if(player.getLocation().getWorld().getName().equals("plotworld") && !player.isOp()){
+				e.setCancelled(true);
+				player.sendMessage(ChatColor.RED + "Player Vaults are disabled in this world!");
 			}
 		}
 	}

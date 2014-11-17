@@ -3,7 +3,6 @@ package net.bobmandude9889.Events;
 import java.util.List;
 
 import net.bobmandude9889.iZenith.IZUtil;
-import net.bobmandude9889.iZenith.Variables;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -17,25 +16,19 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class PlayerInteractEventHandler extends IZUtil implements Listener{
-	JavaPlugin plugin = null;
-	Variables vars = null;
-	
-	public PlayerInteractEventHandler(){
-		this.plugin = getMain();
-		this.vars = getVars();
-	}
+	JavaPlugin plugin = getMain();
 	
 	@EventHandler
 	public void onPlayerInteract(PlayerInteractEvent event) {
 		Player player = event.getPlayer();
 		if (event.getAction().equals(Action.RIGHT_CLICK_BLOCK)
 				&& event.hasItem() && event.getItem().getType().equals(Material.IRON_AXE)) {
-			if (vars.selectors.contains(player)) {
+			if (getVars().selectors.contains(player)) {
 				event.setCancelled(true);
-				if (vars.selection2.containsKey(player.getName())) {
-					vars.selection2.remove(player.getName());
+				if (getVars().selection2.containsKey(player.getName())) {
+					getVars().selection2.remove(player.getName());
 				}
-				vars.selection2.put(player.getName(), new Location(event
+				getVars().selection2.put(player.getName(), new Location(event
 						.getClickedBlock().getWorld(), event.getClickedBlock()
 						.getX(), event.getClickedBlock().getY(), event
 						.getClickedBlock().getZ()));
@@ -67,7 +60,7 @@ public class PlayerInteractEventHandler extends IZUtil implements Listener{
 				loc.subtract(1, 0, 0);
 			stringFires.add(loc.getBlockX() + "," + loc.getBlockY() + ","
 					+ loc.getBlockZ() + "," + loc.getWorld().getName());
-			vars.fires.add(loc);
+			getVars().fires.add(loc);
 			plugin.getConfig().set("fireLocs", stringFires);
 			plugin.saveConfig();
 		} else if (event.getAction().equals(Action.LEFT_CLICK_BLOCK)) {
@@ -85,14 +78,14 @@ public class PlayerInteractEventHandler extends IZUtil implements Listener{
 				loc.add(1, 0, 0);
 			else if (bf.equals(BlockFace.WEST))
 				loc.subtract(1, 0, 0);
-			if (vars.fires.contains(loc)) {
+			if (getVars().fires.contains(loc)) {
 				if (player.isOp()) {
 					List<String> stringFires = plugin.getConfig().getStringList(
 							"fireLocs");
 					stringFires.remove(loc.getBlockX() + "," + loc.getBlockY()
 							+ "," + loc.getBlockZ() + ","
 							+ loc.getWorld().getName());
-					vars.fires.remove(loc);
+					getVars().fires.remove(loc);
 					plugin.getConfig().set("fireLocs", stringFires);
 					plugin.saveConfig();
 				} else {

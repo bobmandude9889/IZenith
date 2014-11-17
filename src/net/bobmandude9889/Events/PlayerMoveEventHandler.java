@@ -1,5 +1,6 @@
 package net.bobmandude9889.Events;
 
+import net.bobmandude9889.iZenith.IZUtil;
 import net.bobmandude9889.iZenith.Variables;
 
 import org.bukkit.entity.Player;
@@ -7,13 +8,9 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
 
-public class PlayerMoveEventHandler implements Listener{
+public class PlayerMoveEventHandler extends IZUtil implements Listener{
 	
-	Variables vars;
-	
-	public PlayerMoveEventHandler(Variables vars){
-		this.vars = vars;
-	}
+	Variables vars = getVars();
 	
 	@EventHandler
 	public void onPlayerMove(PlayerMoveEvent e){
