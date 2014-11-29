@@ -1,8 +1,6 @@
 package net.bobmandude9889.Arena;
 
-import net.bobmandude9889.Duels.Arena;
-import net.bobmandude9889.Duels.Main;
-import net.bobmandude9889.Duels.User;
+import net.bobmandude9889.iZenith.Main;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -20,7 +18,7 @@ public class Arena {
 	DuelPlayer p2;
 
 	public static boolean isIn(Player player, Main main) {
-		for (Arena a : main.arenas) {
+		for (net.bobmandude9889.Duels.Arena a : main.vars.arenas) {
 			if (a.containsPlayer(player))
 				return true;
 		}
@@ -36,11 +34,11 @@ public class Arena {
 	}
 
 	public void setP1(Player p) {
-		this.p1 = new User(p);
+		this.p1 = new DuelPlayer(p);
 	}
 
 	public void setP2(Player p) {
-		this.p2 = new User(p);
+		this.p2 = new DuelPlayer(p);
 	}
 
 	public boolean sendPlayerMessages(String m) {

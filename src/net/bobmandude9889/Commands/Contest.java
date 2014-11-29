@@ -37,6 +37,19 @@ public class Contest extends IZUtil implements IZCommand {
 				getMain().saveConfig();
 				sender.sendMessage("Entered the contest");
 			}
+		} else if (c1.equalsIgnoreCase("leave")) {
+			List<String> contest = getMain().getConfig().getStringList("contest");
+			if (contest == null) {
+				contest = new ArrayList<String>();
+			}
+			if (contest.contains(sender.getName())) {
+				contest.remove(sender.getName());
+				getMain().getConfig().set("contest", contest);
+				getMain().saveConfig();
+				sender.sendMessage(ChatColor.GREEN + "You are no longer in the contest.");
+			} else {
+				sender.sendMessage(ChatColor.RED + "You have not entered the contest.");
+			}
 		} else if (c1.equalsIgnoreCase("list")) {
 			List<String> contest = getMain().getConfig().getStringList("contest");
 			if (contest == null) {
